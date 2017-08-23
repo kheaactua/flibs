@@ -56,6 +56,10 @@
 #endif /* defined(DBL_UNDERSCORE) */
 #endif /* defined(LOWERCASE) || defined(DBL_UNDERSCORE) */
 
+#ifndef FTNCALL
+#define FTNCALL
+#endif
+
 #include <string.h>
 #include "sqlite3.h"
 
