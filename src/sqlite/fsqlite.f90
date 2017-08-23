@@ -572,15 +572,15 @@ end subroutine sqlite3_create_table
 !    A new selection is prepared
 !
 subroutine sqlite3_prepare_select( db, tablename, columns, stmt, extra_clause )
-   type(SQLITE_DATABASE)                       :: db
-   character(len=*)                            :: tablename
-   type(SQLITE_COLUMN), dimension(:), pointer  :: columns     ! On return: actual columns!
-   character(len=*), optional                  :: extra_clause
-   type(SQLITE_STATEMENT), intent(out)         :: stmt
+   type(SQLITE_DATABASE)                                  :: db
+   character(len=*)                                       :: tablename
+   type(SQLITE_COLUMN), dimension(:), pointer             :: columns     ! On return: actual columns!
+   character(len=*), optional                             :: extra_clause
+   type(SQLITE_STATEMENT), intent(out)                    :: stmt
 
-   character(len=20+80*size(columns))          :: command
-   integer                                     :: nocols
-   integer                                     :: i
+   character(len=20+(80*size(columns))+len(extra_clause)) :: command
+   integer                                                :: nocols
+   integer                                                :: i
 
    !
    ! Prepare the select statement for this table
